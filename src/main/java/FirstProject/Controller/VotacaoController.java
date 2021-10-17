@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/votacao")
+@RequestMapping("/votacao/v0")
 public class VotacaoController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class VotacaoController {
 
     @GetMapping("/{id}")
     public VotacaoResponseDTO findVotacao(@PathVariable
-    int id) {
+    long id) {
         return service.findVotacao(id);
     }
 }

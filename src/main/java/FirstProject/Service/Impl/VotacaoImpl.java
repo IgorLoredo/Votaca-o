@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class VotacaoImpl implements Votacao {
 
 
-    public VotacaoResponseDTO registarVoto(String cpf, Integer voto){
+    public VotacaoResponseDTO countVoto(String cpf, Integer voto){
         try{
 
         } catch (Exception e) {
@@ -18,7 +18,7 @@ public class VotacaoImpl implements Votacao {
         return null;
     }
 
-    public VotacaoResponseDTO findVotacao(int id){
+    public VotacaoResponseDTO findVotacao(long id){
         return null;
     }
 }
