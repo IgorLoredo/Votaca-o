@@ -1,12 +1,11 @@
 package FirstProject.Service.Impl;
 
 import FirstProject.DTO.Response.VotacaoResponseDTO;
-import FirstProject.Service.Votacao;
-import org.springframework.beans.factory.annotation.Autowired;
+import FirstProject.Service.VotacaoService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VotacaoImpl implements Votacao {
+public class VotacaoServiceImpl implements VotacaoService {
 
 
     public VotacaoResponseDTO countVoto(String cpf, Integer voto){
@@ -19,7 +18,10 @@ public class VotacaoImpl implements Votacao {
     }
 
     public VotacaoResponseDTO findVotacao(long id){
-        return null;
+        var voto =  new VotacaoResponseDTO();
+
+
+        return voto;
     }
 }
 
