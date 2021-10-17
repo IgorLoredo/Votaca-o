@@ -9,4 +9,5 @@ import lombok.Setter;
 public class VotaçaoRequestDTO {
     String status;
     String id_Voto;
+    private Boolean ehSim;
 }
