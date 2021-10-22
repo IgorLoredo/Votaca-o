@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Table(name="VOTO")
 public class Voto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +15,12 @@ public class Voto {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sessao_id")
-    private Votacao sessaoVotacao;
+    private Votacao votacao;
 
     @Column(nullable = false)
-    private String associado;
+    private String cpf;
 
     @Column(nullable = false)
-    private boolean ehVotoAprovativo;
+    private boolean isVotoConfirmacao;
 }
+

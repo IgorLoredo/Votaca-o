@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -18,10 +19,11 @@ public class Votacao implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
-    private Long id_votacao;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private long time;
+    @Column
+    private Date dataHoraAbertura;
 
     @OneToMany(cascade = CascadeType.ALL,targetEntity = Pauta.class)
     private List<Pauta> pauta;
