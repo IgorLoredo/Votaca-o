@@ -10,5 +10,5 @@ public interface VotacaoService {
 
     public VotacaoResponseDTO findVotacao(long id);
 
-    public MessageDTO createVotocao(VotacaoRequestDTO request);
+    public MessageDTO createVotacao(VotacaoRequestDTO request);
 }

@@ -9,6 +9,7 @@ import FirstProject.Repository.PautaRepository;
 import FirstProject.Repository.VotacaoRepository;
 import FirstProject.Repository.VotoRepository;
 import FirstProject.Service.VotacaoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class VotacaoServiceImpl implements VotacaoService {
 
     @Autowired
@@ -27,10 +29,12 @@ public class VotacaoServiceImpl implements VotacaoService {
     @Autowired
     private VotacaoRepository votacaoRepository;
 
-    public MessageDTO createVotocao(VotacaoRequestDTO request){
+    public MessageDTO createVotacao(VotacaoRequestDTO request){
 
         try{
+            log.info("Pauta ");
             Pauta pauta = pautaRepository.findById(request.getIdPauta()).get();
+            log.info("Pauta {}",pauta.getId());
             Votacao votacao = Votacao.toRest(request,pauta);
             votacaoRepository.save(votacao);
             MessageDTO message = new MessageDTO();

@@ -23,6 +23,6 @@ public class VotacaoController {
 
     @GetMapping("/create")
     public MessageDTO createVotacao(@RequestBody VotacaoRequestDTO requestDTO){
-        return service.createVotocao(requestDTO);
+        return service.createVotacao(requestDTO);
     }
 }

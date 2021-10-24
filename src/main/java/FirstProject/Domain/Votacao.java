@@ -4,6 +4,7 @@ package FirstProject.Domain;
 import FirstProject.DTO.Request.VotacaoRequestDTO;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "votacao")
+@Slf4j
 public class Votacao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,9 +40,10 @@ public class Votacao implements Serializable {
         votacao.setDataHoraAbertura(new Date());
         votacao.setTempoAbertura(decideTempo(requestDTO.getTimeVotacao()));
         votacao.setPauta(pauta);
+        log.info("resquet{}", votacao.getTempoAbertura());
         return votacao;
     }
-    private static long decideTempo(long tempoDeAberturaEmSegundos) {
-        return (tempoDeAberturaEmSegundos == 0|| tempoDeAberturaEmSegundos <= 0) ? 60 : tempoDeAberturaEmSegundos;
+    private static Long decideTempo(Long tempoDeAberturaEmSegundos) {
+        return (tempoDeAberturaEmSegundos == null|| tempoDeAberturaEmSegundos <= 0) ? 60 : tempoDeAberturaEmSegundos;
     }
 }
