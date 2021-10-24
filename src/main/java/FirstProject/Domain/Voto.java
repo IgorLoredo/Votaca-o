@@ -2,6 +2,7 @@ package FirstProject.Domain;
 
 import FirstProject.DTO.Request.VotoRequestDTO;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name="VOTO")
+@Slf4j
 public class Voto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +26,10 @@ public class Voto {
     @Column(nullable = false)
     private boolean isVotoConfirmacao;
 
-    public Voto(VotoRequestDTO requestDTO){
+    public Voto(VotoRequestDTO requestDTO, Votacao votacao){
         this.cpf = requestDTO.getCPF();
-        this.votacao.setId(requestDTO.getIdVotacao());
+        log.info(" ID votacao {}", requestDTO.getIdVotacao());
+        this.votacao = votacao;
         this.isVotoConfirmacao = requestDTO.isEhSim();
     }
 }

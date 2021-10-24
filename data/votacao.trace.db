@@ -123,3 +123,6 @@ Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name
 2021-10-24 18:04:43 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "VOTACAO[*]"; SQL statement:
 VOTACAO [42000-200]
+2021-10-24 19:03:05 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "VOTO[*]"; SQL statement:
+VOTO [42000-200]
