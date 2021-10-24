@@ -1,6 +1,7 @@
 package FirstProject.Domain;
 
 
+import FirstProject.DTO.Request.VotacaoRequestDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "VOTACAO")
+@Table(name = "votacao")
 public class Votacao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,17 +26,21 @@ public class Votacao implements Serializable {
     @Column
     private Date dataHoraAbertura;
 
-    @OneToMany(cascade = CascadeType.ALL,targetEntity = Pauta.class)
-    private List<Pauta> pauta;
+    @Column
+    private Long tempoAbertura;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "pauta_id")
+    private Pauta pauta;
 
-//    public Votacao(final Pauta pauta, long time) {
-//        this.pauta.add(pauta);
-//        this.time = time;
-//    }
-
-//    public Votacao(final Pauta pauta) {
-//        this.pauta.add(pauta);
-//        this.time = 60;
-//    }
+    public static Votacao toRest(VotacaoRequestDTO requestDTO, Pauta pauta){
+        Votacao votacao = new Votacao();
+        votacao.setDataHoraAbertura(new Date());
+        votacao.setTempoAbertura(decideTempo(requestDTO.getTimeVotacao()));
+        votacao.setPauta(pauta);
+        return votacao;
+    }
+    private static long decideTempo(long tempoDeAberturaEmSegundos) {
+        return (tempoDeAberturaEmSegundos == 0|| tempoDeAberturaEmSegundos <= 0) ? 60 : tempoDeAberturaEmSegundos;
+    }
 }

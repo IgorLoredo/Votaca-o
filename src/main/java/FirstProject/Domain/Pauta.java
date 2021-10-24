@@ -10,15 +10,15 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "PAUTA")
+@Table(name = "pauta")
 public class Pauta {
     @Id
     private Integer voto;
+
     private String motivo;
 
-    private Integer totalVotos;
 
-//    public Pauta(final String motivo ){
-//        this.motivo = motivo;
-//    }
+    public Pauta(final String motivo ){
+        this.motivo = motivo;
+    }
 }

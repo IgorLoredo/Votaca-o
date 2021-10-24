@@ -10,5 +10,9 @@ import java.util.List;
 @Repository
 public interface VotoRepository extends JpaRepository<Voto, Long> {
 
-    List<Voto> findAllByVoto_Id(Long votacaoId);
+    List<Voto> findAllById(Long votacaoId);
+
+    List<Voto> findAllByVotacao_Id(Long votacaoId);
+
+    Voto findByVotacao_IdAndCpf(Long votacaoId, String cpf);
 }

@@ -35,11 +35,18 @@ public class VotoServiceImpl implements VotoService {
             logger.info("{}",requestDTO.getCPF());
 
             if(integration.podeVotar(requestDTO.getCPF())){
+               validaVotoDuplicado(requestDTO);
+               Voto newVoto = new Voto(requestDTO);
+
+                //votoRepository.save(newVoto);
                 var message = new MessageDTO();
                 message.setStatus("Voto Confirmado");
                 findVotacao(requestDTO.getIdVotacao());
+                logger.info("Voto Confirmado");
                 return message;
             }
+            return new MessageDTO();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,9 +55,17 @@ public class VotoServiceImpl implements VotoService {
     }
 
     public MessageDTO findVotacao(long votacao){
-        List<Voto> listVotos =votoRepository.findAllByVoto_Id(votacao);
+        List<Voto> listVotos =votoRepository.findAllById(votacao);
         logger.info("Votos{}",listVotos.size());
         return null;
     }
 
+    public int validaVotoDuplicado(VotoRequestDTO requestDTO){
+        Voto votoCont = votoRepository.findByVotacao_IdAndCpf(requestDTO.getIdVotacao(), requestDTO.getCPF());
+        logger.info("Votos{}",votoCont);
+        if(votoCont != null && votoCont.getId() != null){
+            return 1;
+        }
+        return 0; // voto invalido
+    }
 }

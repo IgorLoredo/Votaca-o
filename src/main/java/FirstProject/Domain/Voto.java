@@ -1,5 +1,6 @@
 package FirstProject.Domain;
 
+import FirstProject.DTO.Request.VotoRequestDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,5 +23,11 @@ public class Voto {
 
     @Column(nullable = false)
     private boolean isVotoConfirmacao;
+
+    public Voto(VotoRequestDTO requestDTO){
+        this.cpf = requestDTO.getCPF();
+        this.votacao.setId(requestDTO.getIdVotacao());
+        this.isVotoConfirmacao = requestDTO.isEhSim();
+    }
 }
 
