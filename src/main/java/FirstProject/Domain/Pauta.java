@@ -1,11 +1,11 @@
 package FirstProject.Domain;
 
+import FirstProject.DTO.Request.PautaRequestDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -13,12 +13,16 @@ import javax.persistence.Table;
 @Table(name = "pauta")
 public class Pauta {
     @Id
-    private Integer voto;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
+    @Column
     private String motivo;
 
-
-    public Pauta(final String motivo ){
-        this.motivo = motivo;
+    public static Pauta toRest(PautaRequestDTO requestDTO) {
+        Pauta pauta = new Pauta();
+        pauta.setId(requestDTO.getId());
+        pauta.setMotivo(requestDTO.getMotivo());
+        return pauta;
     }
 }

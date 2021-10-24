@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class VotacaoRequestDTO {
-    private String status;
-    private  long idPauta;
-    private long timeVotacao;
+
+    private  Long idPauta;
+    private Long timeVotacao;
 }

@@ -9,4 +9,5 @@ import lombok.Setter;
 public class PautaRequestDTO {
 
     private String motivo;
+    private  Long id;
 }

@@ -1,6 +1,7 @@
 package FirstProject.Controller;
 
 
+import FirstProject.DTO.MessageDTO;
 import FirstProject.DTO.Request.PautaRequestDTO;
 import FirstProject.DTO.Response.PautaResponseDTO;
 import FirstProject.Service.Impl.PautaServiceImpl;
@@ -22,7 +23,7 @@ public class PautaController {
     }
 
     @PostMapping
-    public PautaResponseDTO createPauta(@RequestBody PautaRequestDTO requestDTO){
+    public MessageDTO createPauta(@RequestBody PautaRequestDTO requestDTO){
         return pautaService.createPauta(requestDTO);
     }
 }

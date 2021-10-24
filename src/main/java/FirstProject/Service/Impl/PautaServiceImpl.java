@@ -21,7 +21,7 @@ public class PautaServiceImpl implements PautaService {
 
     public MessageDTO createPauta(PautaRequestDTO requestDTO){
         try{
-            Pauta pauta = new Pauta(requestDTO.getMotivo());
+            Pauta pauta = Pauta.toRest(requestDTO);
             repository.save(pauta);
             MessageDTO messageDTO = new MessageDTO();
             messageDTO.setStatus("Pauta criada com sucesso");
