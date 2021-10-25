@@ -49,17 +49,17 @@ public class VotacaoServiceImpl implements VotacaoService {
 
     public VotacaoResponseDTO countVoto(String cpf, Integer voto){
         try{
-
+            Votacao votacao = findVotacao();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public VotacaoResponseDTO findVotacao(long id){
-        var voto =  new VotacaoResponseDTO();
+    public Votacao findVotacao(long id){
+        var votacao =  new Votacao();
 
-        return voto;
+        return votacao;
     }
 
 }
